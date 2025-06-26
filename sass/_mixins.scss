@@ -1,0 +1,30 @@
+@use "variables" as v;
+
+// sass/_mixins.scss
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-styles {
+  padding: 12px 25px;
+  border: none;
+  border-radius: v.$border-radius;
+  background-color: v.$primary-color;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color v.$transition-speed,
+    transform v.$transition-speed;
+
+  &:hover {
+    background-color: darken(v.$primary-color, 10%);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

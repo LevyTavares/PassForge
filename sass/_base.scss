@@ -1,0 +1,43 @@
+// sass/_base.scss
+
+@use 'variables' as v; // Importa variáveis com alias 'v'
+@use 'mixins' as m;    // Importa mixins com alias 'm'
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    @include m.flex-center; // Usando o mixin importado
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, v.$background-color, lighten(v.$background-color, 5%));
+    color: v.$text-color;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: v.$card-background;
+    padding: 40px;
+    border-radius: v.$border-radius;
+    box-shadow: v.$shadow;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: v.$primary-color;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+// Área de Mensagens
+.message-area {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: green; // Padrão para sucesso
+    min-height: 20px; // Evita que o layout pule
+    &.error {
+        color: red;
+    }
+}

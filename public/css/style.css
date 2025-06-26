@@ -1,0 +1,218 @@
+@charset "UTF-8";
+body {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #f0f2f5, white);
+  color: #333;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+h1 {
+  color: #3f51b5;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.message-area {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: green;
+  min-height: 20px;
+}
+.message-area.error {
+  color: red;
+}
+
+.password-display {
+  display: flex;
+  margin-bottom: 30px;
+  border: 2px solid #3f51b5;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.password-display #passwordOutput {
+  flex-grow: 1;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  background-color: #e4e7f6;
+  color: #3f51b5;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.password-display #copyButton {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3f51b5;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #673ab7;
+  border-radius: 0 8px 8px 0;
+  width: 60px;
+  flex-shrink: 0;
+}
+.password-display #copyButton:hover {
+  background-color: #32408f;
+}
+.password-display #copyButton:active {
+  transform: translateY(0);
+}
+.password-display #copyButton svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+.password-display #copyButton:hover {
+  background-color: #512e90;
+}
+
+.options {
+  text-align: left;
+  margin-bottom: 30px;
+}
+.options .option-group {
+  margin-bottom: 20px;
+}
+.options .option-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #333;
+}
+.options .range-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.options .range-wrapper #passwordLength {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: #f0f2f5;
+  outline: none;
+}
+.options .range-wrapper #passwordLength::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #3f51b5;
+  cursor: pointer;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.options .range-wrapper #passwordLength::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #3f51b5;
+  cursor: pointer;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.options .range-wrapper #lengthValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3f51b5;
+  min-width: 25px;
+  text-align: right;
+}
+.options .checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.options .checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  cursor: pointer;
+}
+.options .checkbox-group label input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #3f51b5;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.options .checkbox-group label input[type=checkbox]:checked {
+  background-color: #3f51b5;
+  border-color: #3f51b5;
+}
+.options .checkbox-group label input[type=checkbox]:checked::after {
+  content: "✓";
+  color: white;
+  font-size: 16px;
+  line-height: 1;
+}
+
+#generateButton {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3f51b5;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+}
+#generateButton:hover {
+  background-color: #32408f;
+}
+#generateButton:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 25px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  .password-display #passwordOutput {
+    font-size: 1rem;
+    padding: 12px 15px;
+  }
+  .options .option-group label {
+    font-size: 0.9rem;
+  }
+}/*# sourceMappingURL=style.css.map */

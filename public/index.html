@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senhas Seguro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Senhas</h1>
+
+        <div class="password-display">
+            <input type="text" id="passwordOutput" readonly placeholder="Sua senha gerada...">
+            <button id="copyButton" title="Copiar senha">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+        </div>
+
+        <div class="options">
+            <div class="option-group">
+                <label for="passwordLength">Tamanho da Senha:</label>
+                <div class="range-wrapper">
+                    <input type="range" id="passwordLength" min="6" max="30" value="12">
+                    <span id="lengthValue">12</span>
+                </div>
+            </div>
+
+            <div class="option-group checkbox-group">
+                <label>
+                    <input type="checkbox" id="includeUppercase" checked> Maiúsculas (ABC)
+                </label>
+                <label>
+                    <input type="checkbox" id="includeLowercase" checked> Minúsculas (abc)
+                </label>
+                <label>
+                    <input type="checkbox" id="includeNumbers" checked> Números (123)
+                </label>
+                <label>
+                    <input type="checkbox" id="includeSymbols"> Símbolos (!@#)
+                </label>
+            </div>
+
+            <button id="generateButton">Gerar Senha</button>
+        </div>
+
+        <div id="messageArea" class="message-area"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

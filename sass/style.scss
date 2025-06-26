@@ -1,0 +1,10 @@
+// sass/style.scss
+
+// Importa os arquivos parciais
+// O @use é a nova forma de importar no SASS, mais robusta que o @import
+@use "sass:math";
+@use 'variables' as v; // Importa variáveis com alias 'v'
+@use 'mixins';
+@use 'base';
+@use 'components';
+@use 'responsive';
