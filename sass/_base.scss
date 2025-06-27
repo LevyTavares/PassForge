@@ -1,20 +1,59 @@
 // sass/_base.scss
 
-@use 'variables' as v; // Importa variáveis com alias 'v'
-@use 'mixins' as m;    // Importa mixins com alias 'm'
+@use 'variables' as v;
+@use 'mixins' as m;
+
+// Definição das variáveis CSS no root (tema claro padrão)
+// Usamos as variáveis SASS (v.$...) para os cálculos de lighten/darken aqui,
+// e então passamos o resultado para a variável CSS (var(--...)).
+:root {
+    --primary-color: #{v.$light-primary-color};
+    --secondary-color: #{v.$light-secondary-color};
+    --text-color: #{v.$light-text-color};
+    --background-color: #{v.$light-background-color};
+    --card-background: #{v.$light-card-background};
+    --shadow-color: rgba(0, 0, 0, 0.1);
+
+    // Variáveis CSS para o gradiente de background (já calculadas no SASS)
+    --background-gradient-start: #{v.$light-background-gradient-start};
+    --background-gradient-end: #{v.$light-background-gradient-end};
+
+    // Variáveis CSS para cores de input/botão que são manipuladas
+    --password-input-background: #{v.$light-password-input-bg};
+    --secondary-hover-color: #{v.$light-secondary-hover-color};
+}
+
+// Estilos para o tema escuro
+body.dark-theme {
+    --primary-color: #{v.$dark-primary-color};
+    --secondary-color: #{v.$dark-secondary-color};
+    --text-color: #{v.$dark-text-color};
+    --background-color: #{v.$dark-background-color};
+    --card-background: #{v.$dark-card-background};
+    --shadow-color: rgba(0, 0, 0, 0.3);
+
+    // Variáveis CSS para o gradiente de background no tema escuro
+    --background-gradient-start: #{v.$dark-background-gradient-start};
+    --background-gradient-end: #{v.$dark-background-gradient-end};
+
+    // Variáveis CSS para cores de input/botão no tema escuro
+    --password-input-background: #{v.$dark-password-input-bg};
+    --secondary-hover-color: #{v.$dark-secondary-hover-color};
+}
 
 body {
     font-family: 'Montserrat', sans-serif;
-    @include m.flex-center; // Usando o mixin importado
+    @include m.flex-center; // Centraliza o conteúdo principal
     min-height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, v.$background-color, lighten(v.$background-color, 5%));
-    color: v.$text-color;
+    // Usando as variáveis CSS para o gradiente no background
+    background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+    color: var(--text-color); // Usando variável CSS
     padding: 20px;
     box-sizing: border-box;
-
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; // Empurra header para cima, footer para baixo
+    transition: background-color v.$transition-speed, color v.$transition-speed; // Transição suave no tema
 }
 
 // Estilos para o Header Principal
@@ -24,14 +63,14 @@ body {
     text-align: center;
     margin-bottom: 25px; // Espaçamento entre o header e o container
     padding: 15px 20px; // Padding interno para o header
-    color: v.$header-text-color; // Cor do texto do cabeçalho
-    background-color: v.$header-background; // Cor de fundo do cabeçalho
-    opacity: 0.9; // Um pouco menos opaco para dar destaque
+    color: var(--text-color); // Usando variável CSS
+    opacity: 0.9;
     box-sizing: border-box; // Garante que padding e borda sejam incluídos na largura
+    position: relative; // Para posicionar o botão de toggle
 
     h1 {
         font-size: 2.2rem; // Tamanho maior para o título principal do site
-        color: v.$primary-color;
+        color: var(--primary-color); // Usando variável CSS
         margin-bottom: 5px; // Espaço entre o h1 e o parágrafo
         font-weight: 700;
         line-height: 1.2; // Altura da linha para melhor legibilidade
@@ -39,63 +78,86 @@ body {
 
     p {
         font-size: 1rem; // Tamanho para a descrição
-        color: darken(v.$text-color, 10%); // Um cinza um pouco mais escuro
+        color: rgba(var(--text-color), 0.8); // CORRIGIDO: Usando rgba para escurecer com variável CSS
+                                          // Isso escurece a cor do texto com base na opacidade,
+                                          // funcionando para ambos os temas.
         margin: 0; // Remove margens padrão do parágrafo
     }
 }
 
+// Estilos para o botão de toggle de tema
+.theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color); // Cor do ícone
+    transition: color v.$transition-speed; // Transição suave
+
+    &:hover {
+        color: var(--primary-color); // Cor do ícone no hover
+    }
+}
+
+
 .container {
-    background-color: v.$card-background;
+    background-color: var(--card-background); // Usando variável CSS
     padding: 40px;
     border-radius: v.$border-radius;
-    box-shadow: v.$shadow;
+    box-shadow: 0 4px 15px var(--shadow-color); // Usando variável CSS para sombra
     width: 100%;
     max-width: 500px;
     text-align: center;
     box-sizing: border-box;
+    transition: background-color v.$transition-speed, box-shadow v.$transition-speed; // Transição suave no container
 }
 
-h1 {
-    color: v.$primary-color;
+// Seu h1 antigo dentro do container
+.container h1 {
+    color: var(--primary-color); // Usando variável CSS
     margin-bottom: 30px;
     font-weight: 700;
+    font-size: 2rem;
 }
 
 // Área de Mensagens
 .message-area {
     margin-top: 20px;
     font-size: 0.9rem;
-    color: green; // Padrão para sucesso
-    min-height: 20px; // Evita que o layout pule
+    color: green; // Cores de status podem ser fixas ou temáticas
+    min-height: 20px;
     &.error {
         color: red;
     }
 }
 
-// Estilos para o Footer Principal
+// Estilos para o Footer
 .main-footer {
     width: 100%;
-    max-width: 500px; // Alinha com a largura máxima do container
+    max-width: 500px;
     text-align: center;
-    margin-top: 30px; // Espaçamento entre o container e o footer
-    padding: 15px 20px; // Padding interno para o footer
-    color: v.$text-color;
+    margin-top: 30px;
+    padding: 15px 20px;
+    color: var(--text-color); // Usando variável CSS
     font-size: 0.9rem;
-    opacity: 0.8; // Suaviza a cor
-    box-sizing: border-box; // Garante que padding e borda sejam incluídos na largura
+    opacity: 0.8;
+    box-sizing: border-box;
 
     a {
-        color: v.$primary-color; // Cor do link igual à primary color
-        text-decoration: none; // Remove sublinhado padrão
+        color: var(--primary-color); // Usando variável CSS
+        text-decoration: none;
         font-weight: 600;
-        transition: color v.$transition-speed; // Transição suave ao passar o mouse
+        transition: color v.$transition-speed;
 
         &:hover {
-            color: darken(v.$primary-color, 10%); // Escurece o link no hover
-            text-decoration: underline; // Adiciona sublinhado no hover
+            // Usando a variável CSS pré-calculada para o hover
+            color: var(--secondary-hover-color); // <-- CORRIGIDO
         }
     }
     p {
-        margin: 0; // Remove margens padrão
+        margin: 0;
     }
 }

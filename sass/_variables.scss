@@ -1,12 +1,34 @@
 // sass/_variables.scss
 
-$primary-color: #3f51b5; // Um azul vibrante
-$secondary-color: #673ab7; // Um roxo complemento
-$text-color: #333;
-$background-color: #f0f2f5; // Cinza claro
-$card-background: #ffffff;
+// Cores base (SASS variables) para o TEMA CLARO
+$light-primary-color: #3f51b5; // Azul vibrante para tema claro
+$light-secondary-color: #673ab7; // Roxo complemento para tema claro
+$light-text-color: #333;
+$light-background-color: #f0f2f5; // Cinza claro
+$light-card-background: #ffffff;
+
+// Cores calculadas para o TEMA CLARO (usando funções SASS)
+$light-background-gradient-start: $light-background-color;
+$light-background-gradient-end: lighten($light-background-color, 5%);
+$light-password-input-bg: lighten($light-primary-color, 45%);
+$light-secondary-hover-color: darken($light-secondary-color, 10%);
+
+
+// Cores base (SASS variables) para o TEMA ESCURO
+$dark-primary-color: #7b1fa2; // Roxo mais escuro para tema escuro
+$dark-secondary-color: #4a148c; // Roxo bem escuro
+$dark-text-color: #e0e0e0; // Cinza claro para texto em fundo escuro
+$dark-background-color: #212121; // Fundo muito escuro
+$dark-card-background: #303030; // Fundo do card mais escuro
+
+// Cores calculadas para o TEMA ESCURO (usando funções SASS)
+$dark-background-gradient-start: $dark-background-color;
+$dark-background-gradient-end: lighten($dark-background-color, 5%);
+$dark-password-input-bg: lighten($dark-primary-color, 25%); // Ajuste o valor de lighten para o tema escuro
+$dark-secondary-hover-color: darken($dark-secondary-color, 10%);
+
+
+// Variáveis de dimensão/velocidade (permanecem como SASS variables)
 $border-radius: 8px;
-$shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+$shadow: 0 4px 15px rgba(0, 0, 0, 0.1); // Sombra genérica para fallback
 $transition-speed: 0.3s ease;
-$header-background: #3f51b5; // Azul do cabeçalho
-$header-text-color: #ffffff; // Cor do texto do cabeçalho

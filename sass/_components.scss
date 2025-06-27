@@ -1,51 +1,51 @@
 // sass/_components.scss
 
-@use 'variables' as v;
+@use 'variables' as v; // Ainda precisamos deste para v.$border-radius e v.$transition-speed
 @use 'mixins' as m;
+@use 'sass:math'; // Certifique-se de ter este import se usar math.div
 
 // Display da Senha
 .password-display {
     display: flex;
     margin-bottom: 30px;
-    border: 2px solid v.$primary-color;
-    border-radius: v.$border-radius;
-    //overflow: hidden;
+    border: 2px solid var(--primary-color); // CORRIGIDO: Usando variável CSS
+    border-radius: v.$border-radius; // Permanece variável SASS
     position: relative;
     box-sizing: border-box;
+}
 
-    #passwordOutput {
-        flex-grow: 1;
-        padding: 15px 20px;
-        font-size: 1.2rem;
-        border: none;
-        outline: none;
-        background-color: lighten(v.$primary-color, 45%);
-        color: v.$primary-color;
-        font-weight: 600;
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        box-sizing: border-box
+#passwordOutput {
+    flex-grow: 1;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    background-color: var(--password-input-background); // Usando variável CSS pré-calculada
+    color: var(--primary-color); // Usando variável CSS
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+#copyButton {
+    @include m.button-styles;
+    background-color: var(--secondary-color); // Usando variável CSS
+    border-radius: 0 v.$border-radius v.$border-radius 0; // Permanece variável SASS
+    width: 60px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+
+    svg {
+        width: 24px;
+        height: 24px;
+        color: white; // Cor fixa para o ícone
     }
 
-    #copyButton {
-        @include m.button-styles;
-        background-color: v.$secondary-color;
-        border-radius: 0 v.$border-radius v.$border-radius 0;
-        width: 60px;
-        flex-shrink: 0;
-        box-sizing: border-box;
-
-        svg {
-            width: 24px;
-            height: 24px;
-            color: white;
-        }
-
-        &:hover {
-            background-color: darken(v.$secondary-color, 10%);
-        }
+    &:hover {
+        background-color: var(--secondary-hover-color); // Usando variável CSS pré-calculada
     }
 }
 
@@ -61,7 +61,7 @@
             display: block;
             margin-bottom: 10px;
             font-weight: 600;
-            color: v.$text-color;
+            color: var(--text-color); // Usando variável CSS
         }
     }
 
@@ -76,7 +76,7 @@
             appearance: none;
             height: 8px;
             border-radius: 5px;
-            background: v.$background-color;
+            background: var(--background-color); // Usando variável CSS
             outline: none;
             &::-webkit-slider-thumb {
                 -webkit-appearance: none;
@@ -84,26 +84,26 @@
                 width: 20px;
                 height: 20px;
                 border-radius: 50%;
-                background: v.$primary-color;
+                background: var(--primary-color); // Usando variável CSS
                 cursor: pointer;
-                border: 3px solid v.$card-background;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                border: 3px solid var(--card-background); // Usando variável CSS
+                box-shadow: 0 0 5px var(--shadow-color); // Usando variável CSS
             }
             &::-moz-range-thumb {
                 width: 20px;
                 height: 20px;
                 border-radius: 50%;
-                background: v.$primary-color;
+                background: var(--primary-color); // Usando variável CSS
                 cursor: pointer;
-                border: 3px solid v.$card-background;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                border: 3px solid var(--card-background); // Usando variável CSS
+                box-shadow: 0 0 5px var(--shadow-color); // Usando variável CSS
             }
         }
 
         #lengthValue {
             font-size: 1.1rem;
             font-weight: 700;
-            color: v.$primary-color;
+            color: var(--primary-color); // Usando variável CSS
             min-width: 25px;
             text-align: right;
         }
@@ -125,16 +125,16 @@
                 appearance: none;
                 width: 20px;
                 height: 20px;
-                border: 2px solid v.$primary-color;
+                border: 2px solid var(--primary-color); // Usando variável CSS
                 border-radius: 4px;
                 margin-right: 10px;
                 cursor: pointer;
                 @include m.flex-center;
-                transition: background-color v.$transition-speed, border-color v.$transition-speed;
+                transition: background-color v.$transition-speed, border-color v.$transition-speed; // Permanece variável SASS
 
                 &:checked {
-                    background-color: v.$primary-color;
-                    border-color: v.$primary-color;
+                    background-color: var(--primary-color); // Usando variável CSS
+                    border-color: var(--primary-color); // Usando variável CSS
 
                     &::after {
                         content: '\2713';

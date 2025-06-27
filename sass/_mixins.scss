@@ -1,4 +1,4 @@
-@use "variables" as v;
+@use 'variables' as v; // Importa variáveis SASS (como $border-radius, $transition-speed)
 
 // sass/_mixins.scss
 
@@ -11,17 +11,19 @@
 @mixin button-styles {
   padding: 12px 25px;
   border: none;
-  border-radius: v.$border-radius;
-  background-color: v.$primary-color;
-  color: white;
+  border-radius: v.$border-radius; // Usa variável SASS (fixa)
+  background-color: var(--primary-color); // CORRIGIDO: Usa variável CSS (temática)
+  color: white; // Cor fixa para o texto do botão
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color v.$transition-speed,
-    transform v.$transition-speed;
+  transition: background-color v.$transition-speed, // Usa variável SASS (fixa)
+    transform v.$transition-speed; // Usa variável SASS (fixa)
 
   &:hover {
-    background-color: darken(v.$primary-color, 10%);
+    background-color: var(--secondary-hover-color); // CORRIGIDO: Usa variável CSS (temática, pré-calculada)
+                                                    // Lembrando que secondary-hover-color já vem do _base.scss
+                                                    // onde o darken foi feito com as variáveis SASS.
   }
 
   &:active {

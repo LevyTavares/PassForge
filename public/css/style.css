@@ -1,4 +1,30 @@
 @charset "UTF-8";
+:root {
+  --primary-color: #3f51b5;
+  --secondary-color: #673ab7;
+  --text-color: #333;
+  --background-color: #f0f2f5;
+  --card-background: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --background-gradient-start: #f0f2f5;
+  --background-gradient-end: white;
+  --password-input-background: #e4e7f6;
+  --secondary-hover-color: #512e90;
+}
+
+body.dark-theme {
+  --primary-color: #7b1fa2;
+  --secondary-color: #4a148c;
+  --text-color: #e0e0e0;
+  --background-color: #212121;
+  --card-background: #303030;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --background-gradient-start: #212121;
+  --background-gradient-end: #2e2e2e;
+  --password-input-background: #ba60e1;
+  --secondary-hover-color: #320e5f;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   display: flex;
@@ -6,12 +32,13 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  background: linear-gradient(135deg, #f0f2f5, white);
-  color: #333;
+  background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+  color: var(--text-color);
   padding: 20px;
   box-sizing: border-box;
   flex-direction: column;
   justify-content: space-between;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .main-header {
@@ -20,39 +47,56 @@ body {
   text-align: center;
   margin-bottom: 25px;
   padding: 15px 20px;
-  color: #ffffff;
-  background-color: #3f51b5;
+  color: var(--text-color);
   opacity: 0.9;
   box-sizing: border-box;
+  position: relative;
 }
 .main-header h1 {
   font-size: 2.2rem;
-  color: #3f51b5;
+  color: var(--primary-color);
   margin-bottom: 5px;
   font-weight: 700;
   line-height: 1.2;
 }
 .main-header p {
   font-size: 1rem;
-  color: #1a1a1a;
+  color: rgba(var(--text-color), 0.8);
   margin: 0;
 }
 
+.theme-toggle {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+.theme-toggle:hover {
+  color: var(--primary-color);
+}
+
 .container {
-  background-color: #ffffff;
+  background-color: var(--card-background);
   padding: 40px;
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow-color);
   width: 100%;
   max-width: 500px;
   text-align: center;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-h1 {
-  color: #3f51b5;
+.container h1 {
+  color: var(--primary-color);
   margin-bottom: 30px;
   font-weight: 700;
+  font-size: 2rem;
 }
 
 .message-area {
@@ -71,20 +115,19 @@ h1 {
   text-align: center;
   margin-top: 30px;
   padding: 15px 20px;
-  color: #333;
+  color: var(--text-color);
   font-size: 0.9rem;
   opacity: 0.8;
   box-sizing: border-box;
 }
 .main-footer a {
-  color: #3f51b5;
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 .main-footer a:hover {
-  color: #32408f;
-  text-decoration: underline;
+  color: var(--secondary-hover-color);
 }
 .main-footer p {
   margin: 0;
@@ -93,19 +136,20 @@ h1 {
 .password-display {
   display: flex;
   margin-bottom: 30px;
-  border: 2px solid #3f51b5;
+  border: 2px solid var(--primary-color);
   border-radius: 8px;
   position: relative;
   box-sizing: border-box;
 }
-.password-display #passwordOutput {
+
+#passwordOutput {
   flex-grow: 1;
   padding: 15px 20px;
   font-size: 1.2rem;
   border: none;
   outline: none;
-  background-color: #e4e7f6;
-  color: #3f51b5;
+  background-color: var(--password-input-background);
+  color: var(--primary-color);
   font-weight: 600;
   text-align: center;
   white-space: nowrap;
@@ -113,35 +157,36 @@ h1 {
   text-overflow: ellipsis;
   box-sizing: border-box;
 }
-.password-display #copyButton {
+
+#copyButton {
   padding: 12px 25px;
   border: none;
   border-radius: 8px;
-  background-color: #3f51b5;
+  background-color: var(--primary-color);
   color: white;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  background-color: #673ab7;
+  background-color: var(--secondary-color);
   border-radius: 0 8px 8px 0;
   width: 60px;
   flex-shrink: 0;
   box-sizing: border-box;
 }
-.password-display #copyButton:hover {
-  background-color: #32408f;
+#copyButton:hover {
+  background-color: var(--secondary-hover-color);
 }
-.password-display #copyButton:active {
+#copyButton:active {
   transform: translateY(0);
 }
-.password-display #copyButton svg {
+#copyButton svg {
   width: 24px;
   height: 24px;
   color: white;
 }
-.password-display #copyButton:hover {
-  background-color: #512e90;
+#copyButton:hover {
+  background-color: var(--secondary-hover-color);
 }
 
 .options {
@@ -155,7 +200,7 @@ h1 {
   display: block;
   margin-bottom: 10px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-color);
 }
 .options .range-wrapper {
   display: flex;
@@ -169,7 +214,7 @@ h1 {
        appearance: none;
   height: 8px;
   border-radius: 5px;
-  background: #f0f2f5;
+  background: var(--background-color);
   outline: none;
 }
 .options .range-wrapper #passwordLength::-webkit-slider-thumb {
@@ -178,24 +223,24 @@ h1 {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #3f51b5;
+  background: var(--primary-color);
   cursor: pointer;
-  border: 3px solid #ffffff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border: 3px solid var(--card-background);
+  box-shadow: 0 0 5px var(--shadow-color);
 }
 .options .range-wrapper #passwordLength::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #3f51b5;
+  background: var(--primary-color);
   cursor: pointer;
-  border: 3px solid #ffffff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border: 3px solid var(--card-background);
+  box-shadow: 0 0 5px var(--shadow-color);
 }
 .options .range-wrapper #lengthValue {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #3f51b5;
+  color: var(--primary-color);
   min-width: 25px;
   text-align: right;
 }
@@ -216,7 +261,7 @@ h1 {
        appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #3f51b5;
+  border: 2px solid var(--primary-color);
   border-radius: 4px;
   margin-right: 10px;
   cursor: pointer;
@@ -226,8 +271,8 @@ h1 {
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 .options .checkbox-group label input[type=checkbox]:checked {
-  background-color: #3f51b5;
-  border-color: #3f51b5;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 .options .checkbox-group label input[type=checkbox]:checked::after {
   content: "✓";
@@ -240,7 +285,7 @@ h1 {
   padding: 12px 25px;
   border: none;
   border-radius: 8px;
-  background-color: #3f51b5;
+  background-color: var(--primary-color);
   color: white;
   font-size: 1rem;
   font-weight: 600;
@@ -249,7 +294,7 @@ h1 {
   width: 100%;
 }
 #generateButton:hover {
-  background-color: #32408f;
+  background-color: var(--secondary-hover-color);
 }
 #generateButton:active {
   transform: translateY(0);
