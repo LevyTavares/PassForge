@@ -218,4 +218,21 @@ h1 {
   .options .option-group label {
     font-size: 0.9rem;
   }
+}
+@media (max-width: 375px) {
+  .container {
+    padding: 15px;
+  }
+  .password-display #passwordOutput {
+    font-size: 0.85rem;
+    padding: 10px 10px;
+  }
+  #copyButton {
+    width: 45px;
+    min-width: 45px;
+  }
+  #copyButton svg {
+    width: 20px;
+    height: 20px;
+  }
 }/*# sourceMappingURL=style.css.map */

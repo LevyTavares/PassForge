@@ -1,22 +1,42 @@
 // sass/_responsive.scss
 
-@use 'variables' as v;
+@use "variables" as v;
 
 @media (max-width: 600px) {
-    .container {
-        padding: 25px;
-    }
+  .container {
+    padding: 25px;
+  }
 
-    h1 {
-        font-size: 1.8rem;
-    }
+  h1 {
+    font-size: 1.8rem;
+  }
 
-    .password-display #passwordOutput {
-        font-size: 1rem;
-        padding: 12px 15px;
-    }
+  .password-display #passwordOutput {
+    font-size: 1rem;
+    padding: 12px 15px;
+  }
 
-    .options .option-group label {
-        font-size: 0.9rem;
+  .options .option-group label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 375px) {
+  // Mantendo o mesmo breakpoint ou ajustando para 320px se preferir
+  .container {
+    padding: 15px; // Mantém este padding reduzido
+  }
+  .password-display #passwordOutput {
+    font-size: 0.85rem; // Reduz um pouco mais a fonte para senhas longas
+    padding: 10px 10px; // Reduz um pouco o padding também
+  }
+  #copyButton {
+    width: 45px; // Tenta diminuir mais um pouco a largura do botão
+    min-width: 45px; // Garante que ele não encolha menos que isso
+    // Opcional: ajustar o tamanho do ícone SVG se ele parecer grande demais agora
+    svg {
+      width: 20px;
+      height: 20px;
     }
+  }
 }
