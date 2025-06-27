@@ -4,8 +4,6 @@
 @use 'mixins' as m;
 
 // Definição das variáveis CSS no root (tema claro padrão)
-// Usamos as variáveis SASS (v.$...) para os cálculos de lighten/darken aqui,
-// e então passamos o resultado para a variável CSS (var(--...)).
 :root {
     --primary-color: #{v.$light-primary-color};
     --secondary-color: #{v.$light-secondary-color};
@@ -14,11 +12,9 @@
     --card-background: #{v.$light-card-background};
     --shadow-color: rgba(0, 0, 0, 0.1);
 
-    // Variáveis CSS para o gradiente de background (já calculadas no SASS)
     --background-gradient-start: #{v.$light-background-gradient-start};
     --background-gradient-end: #{v.$light-background-gradient-end};
 
-    // Variáveis CSS para cores de input/botão que são manipuladas
     --password-input-background: #{v.$light-password-input-bg};
     --secondary-hover-color: #{v.$light-secondary-hover-color};
 }
@@ -27,16 +23,14 @@
 body.dark-theme {
     --primary-color: #{v.$dark-primary-color};
     --secondary-color: #{v.$dark-secondary-color};
-    --text-color: #{v.$dark-text-color};
+    --text-color: #{v.$dark-text-color}; // <-- Certifique-se que esta é a nova cor clara
     --background-color: #{v.$dark-background-color};
     --card-background: #{v.$dark-card-background};
-    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-color: rgba(0, 0, 0, 0.5); // Sombra mais proeminente no tema escuro para contraste
 
-    // Variáveis CSS para o gradiente de background no tema escuro
     --background-gradient-start: #{v.$dark-background-gradient-start};
     --background-gradient-end: #{v.$dark-background-gradient-end};
 
-    // Variáveis CSS para cores de input/botão no tema escuro
     --password-input-background: #{v.$dark-password-input-bg};
     --secondary-hover-color: #{v.$dark-secondary-hover-color};
 }
@@ -48,7 +42,7 @@ body {
     margin: 0;
     // Usando as variáveis CSS para o gradiente no background
     background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
-    color: var(--text-color); // Usando variável CSS
+    color: var(--text-color); // <-- Garante que a cor do texto do body usa a variável CSS
     padding: 20px;
     box-sizing: border-box;
     flex-direction: column;
@@ -70,7 +64,7 @@ body {
 
     h1 {
         font-size: 2.2rem; // Tamanho maior para o título principal do site
-        color: var(--primary-color); // Usando variável CSS
+        color: var(--primary-color); // Certifique-se de que está usando var(--primary-color)
         margin-bottom: 5px; // Espaço entre o h1 e o parágrafo
         font-weight: 700;
         line-height: 1.2; // Altura da linha para melhor legibilidade
@@ -78,14 +72,12 @@ body {
 
     p {
         font-size: 1rem; // Tamanho para a descrição
-        color: rgba(var(--text-color), 0.8); // CORRIGIDO: Usando rgba para escurecer com variável CSS
-                                          // Isso escurece a cor do texto com base na opacidade,
-                                          // funcionando para ambos os temas.
-        margin: 0; // Remove margens padrão do parágrafo
+        color: var(--text-color); // <--- Ajustado para usar a variável CSS diretamente
+        opacity: 0.8; // Mantemos a opacidade para um tom ligeiramente mais suave
     }
 }
 
-// Estilos para o botão de toggle de tema
+// Estilos para o botão de toggle de tema (ícone de engrenagem)
 .theme-toggle {
     position: absolute;
     top: 15px;
@@ -94,11 +86,11 @@ body {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--text-color); // Cor do ícone
-    transition: color v.$transition-speed; // Transição suave
+    color: var(--text-color); // <--- Usa a variável CSS para que mude com o tema
+    transition: color v.$transition-speed;
 
     &:hover {
-        color: var(--primary-color); // Cor do ícone no hover
+        color: var(--primary-color); // A cor do hover do ícone também deve mudar com o tema
     }
 }
 
@@ -141,13 +133,13 @@ body {
     text-align: center;
     margin-top: 30px;
     padding: 15px 20px;
-    color: var(--text-color); // Usando variável CSS
+    color: var(--text-color); // <-- Adicionado para garantir que o texto do footer use a variável do tema
     font-size: 0.9rem;
     opacity: 0.8;
     box-sizing: border-box;
 
     a {
-        color: var(--primary-color); // Usando variável CSS
+        color: var(--primary-color); // Link principal do tema
         text-decoration: none;
         font-weight: 600;
         transition: color v.$transition-speed;

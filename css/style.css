@@ -18,7 +18,7 @@ body.dark-theme {
   --text-color: #f5f5f5;
   --background-color: #121212;
   --card-background: #1e1e1e;
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.5);
   --background-gradient-start: #121212;
   --background-gradient-end: #1f1f1f;
   --password-input-background: #c34cd7;
@@ -61,8 +61,8 @@ body {
 }
 .main-header p {
   font-size: 1rem;
-  color: rgba(var(--text-color), 0.8);
-  margin: 0;
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .theme-toggle {
