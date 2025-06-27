@@ -8,7 +8,7 @@
 .password-display {
     display: flex;
     margin-bottom: 30px;
-    border: 2px solid var(--primary-color); // CORRIGIDO: Usando variável CSS
+    border: 2px solid var(--primary-color); // Usando variável CSS
     border-radius: v.$border-radius; // Permanece variável SASS
     position: relative;
     box-sizing: border-box;
@@ -29,9 +29,10 @@
     text-overflow: ellipsis;
     box-sizing: border-box;
 
-    // --- NOVO AJUSTE PARA O TEMA ESCURO ---
+    // --- AJUSTE PARA O TEMA ESCURO ---
     body.dark-theme & { // Aplica estas regras quando o body tem a classe dark-theme
-        color: #f5f5f5; // Cor do texto da senha no tema escuro (um cinza bem claro/quase branco)
+        color: #eee; // CORRIGIDO: Cor do texto da senha no tema escuro (um cinza muito claro)
+        background-color: #ba68c8; // CORRIGIDO: Fundo do input da senha no tema escuro (roxo mais claro e rosado)
     }
 }
 
@@ -65,8 +66,8 @@
         label {
             display: block;
             margin-bottom: 10px;
-            font-weight: 600;
             color: var(--text-color); // Usando variável CSS
+            font-weight: 600; // Mantendo o font-weight aqui
         }
     }
 
@@ -122,7 +123,7 @@
         label {
             display: flex;
             align-items: center;
-            font-weight: 400;
+            font-weight: 400; // Permanecendo 400 para o texto da label do checkbox
             cursor: pointer;
 
             input[type="checkbox"] {
