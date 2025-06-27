@@ -157,6 +157,9 @@ body {
   text-overflow: ellipsis;
   box-sizing: border-box;
 }
+body.dark-theme #passwordOutput {
+  color: #f5f5f5;
+}
 
 #copyButton {
   padding: 12px 25px;
