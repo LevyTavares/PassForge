@@ -158,8 +158,8 @@ body {
   box-sizing: border-box;
 }
 body.dark-theme #passwordOutput {
-  color: #eee;
-  background-color: #ba68c8;
+  color: #ba68c8;
+  background-color: #2C2C2C;
 }
 
 #copyButton {

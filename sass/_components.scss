@@ -31,8 +31,8 @@
 
     // --- AJUSTE PARA O TEMA ESCURO ---
     body.dark-theme & { // Aplica estas regras quando o body tem a classe dark-theme
-        color: #eee; // CORRIGIDO: Cor do texto da senha no tema escuro (um cinza muito claro)
-        background-color: #ba68c8; // CORRIGIDO: Fundo do input da senha no tema escuro (roxo mais claro e rosado)
+        color: #ba68c8; // CORRIGIDO: Cor do texto da senha no tema escuro (um cinza muito claro)
+        background-color: #2C2C2C; // CORRIGIDO: Fundo do input da senha no tema escuro (roxo mais claro e rosado)
     }
 }
 
