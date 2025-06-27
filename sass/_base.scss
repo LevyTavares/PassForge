@@ -12,6 +12,36 @@ body {
     color: v.$text-color;
     padding: 20px;
     box-sizing: border-box;
+
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+// Estilos para o Header Principal
+.main-header {
+    width: 100%;
+    max-width: 500px; // Alinha com a largura máxima do container
+    text-align: center;
+    margin-bottom: 25px; // Espaçamento entre o header e o container
+    padding: 15px 20px; // Padding interno para o header
+    color: v.$header-text-color; // Cor do texto do cabeçalho
+    background-color: v.$header-background; // Cor de fundo do cabeçalho
+    opacity: 0.9; // Um pouco menos opaco para dar destaque
+    box-sizing: border-box; // Garante que padding e borda sejam incluídos na largura
+
+    h1 {
+        font-size: 2.2rem; // Tamanho maior para o título principal do site
+        color: v.$primary-color;
+        margin-bottom: 5px; // Espaço entre o h1 e o parágrafo
+        font-weight: 700;
+        line-height: 1.2; // Altura da linha para melhor legibilidade
+    }
+
+    p {
+        font-size: 1rem; // Tamanho para a descrição
+        color: darken(v.$text-color, 10%); // Um cinza um pouco mais escuro
+        margin: 0; // Remove margens padrão do parágrafo
+    }
 }
 
 .container {
@@ -39,5 +69,33 @@ h1 {
     min-height: 20px; // Evita que o layout pule
     &.error {
         color: red;
+    }
+}
+
+// Estilos para o Footer Principal
+.main-footer {
+    width: 100%;
+    max-width: 500px; // Alinha com a largura máxima do container
+    text-align: center;
+    margin-top: 30px; // Espaçamento entre o container e o footer
+    padding: 15px 20px; // Padding interno para o footer
+    color: v.$text-color;
+    font-size: 0.9rem;
+    opacity: 0.8; // Suaviza a cor
+    box-sizing: border-box; // Garante que padding e borda sejam incluídos na largura
+
+    a {
+        color: v.$primary-color; // Cor do link igual à primary color
+        text-decoration: none; // Remove sublinhado padrão
+        font-weight: 600;
+        transition: color v.$transition-speed; // Transição suave ao passar o mouse
+
+        &:hover {
+            color: darken(v.$primary-color, 10%); // Escurece o link no hover
+            text-decoration: underline; // Adiciona sublinhado no hover
+        }
+    }
+    p {
+        margin: 0; // Remove margens padrão
     }
 }
