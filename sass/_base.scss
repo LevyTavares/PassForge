@@ -37,48 +37,50 @@ body.dark-theme {
 
 body {
     font-family: 'Montserrat', sans-serif;
-    @include m.flex-center; // Centraliza o conteúdo principal
+    @include m.flex-center;
     min-height: 100vh;
     margin: 0;
-    // Usando as variáveis CSS para o gradiente no background
     background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
-    color: var(--text-color); // <-- Garante que a cor do texto do body usa a variável CSS
+    color: var(--text-color);
     padding: 20px;
     box-sizing: border-box;
     flex-direction: column;
-    justify-content: space-between; // Empurra header para cima, footer para baixo
-    transition: background-color v.$transition-speed, color v.$transition-speed; // Transição suave no tema
+    justify-content: space-between;
+    transition: background-color v.$transition-speed, color v.$transition-speed;
 }
 
-// Estilos para o Header Principal
+// Estilos para o Header Principal - Mais espaço e um visual "flutuante"
 .main-header {
     width: 100%;
-    max-width: 500px; // Alinha com a largura máxima do container
+    max-width: 500px;
     text-align: center;
-    margin-bottom: 25px; // Espaçamento entre o header e o container
-    padding: 15px 20px; // Padding interno para o header
-    color: var(--text-color); // Usando variável CSS
-    opacity: 0.9;
-    box-sizing: border-box; // Garante que padding e borda sejam incluídos na largura
+    margin-bottom: 25px;
+    padding: 25px 30px; // Aumentado o padding
+    background-color: var(--card-background); // Adicionado fundo
+    border-radius: v.$border-radius;
+    box-shadow: 0 6px 20px var(--shadow-color); // Sombra mais proeminente e suave
+    color: var(--text-color);
+    opacity: 1; // Removido opacidade, o fundo já o destaca
+    box-sizing: border-box;
     position: relative; // Para posicionar o botão de toggle
 
     h1 {
-        font-size: 2.2rem; // Tamanho maior para o título principal do site
-        color: var(--primary-color); // Certifique-se de que está usando var(--primary-color)
-        margin-bottom: 5px; // Espaço entre o h1 e o parágrafo
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin-bottom: 10px; // Ajustado espaço
         font-weight: 700;
-        line-height: 1.2; // Altura da linha para melhor legibilidade
+        line-height: 1.2;
     }
 
     p {
-        font-size: 1rem; // Tamanho para a descrição
-        color: var(--text-color); // <--- Ajustado para usar a variável CSS diretamente
-        opacity: 0.8; // Mantemos a opacidade para um tom ligeiramente mais suave
+        font-size: 1rem;
+        color: var(--text-color); // Usando a variável de texto principal
+        opacity: 0.8; // Para o subtítulo ser um pouco mais suave
+        margin: 0;
     }
 }
-
-// Estilos para o botão de toggle de tema (ícone de engrenagem)
-.theme-toggle {
+// Estilos para o botão de copiar senha
+#copyButton {
     position: absolute;
     top: 15px;
     right: 20px;
@@ -86,26 +88,55 @@ body {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--text-color); // <--- Usa a variável CSS para que mude com o tema
+    color: var(--text-color);
     transition: color v.$transition-speed;
 
     &:hover {
-        color: var(--primary-color); // A cor do hover do ícone também deve mudar com o tema
+        color: var(--primary-color);
+    }
+}
+// Estilos para o botão de copiar senha (ícone de copiar)
+#copyButton svg {
+    width: 24px;
+    height: 24px;
+}
+
+// Estilos para o botão de toggle de tema - Ajuste de posição e background
+.theme-toggle {
+    position: absolute;
+    top: 20px; // Ajustado para mais espaço no padding
+    right: 25px; // Ajustado para mais espaço no padding
+    background-color: var(--background-color); // Fundo sutil para o botão
+    border: 1px solid var(--primary-color); // Borda para destaque
+    border-radius: 50%; // Circular
+    width: 40px;
+    height: 40px;
+    @include m.flex-center; // Centraliza o ícone
+    font-size: 1.2rem; // Tamanho do ícone
+    cursor: pointer;
+    color: var(--primary-color); // Cor do ícone
+    transition: background-color v.$transition-speed, color v.$transition-speed, border-color v.$transition-speed;
+
+    &:hover {
+        background-color: var(--primary-color); // Preenche o círculo no hover
+        color: var(--card-background); // Ícone fica claro no hover
+        border-color: var(--primary-color);
     }
 }
 
 
 .container {
-    background-color: var(--card-background); // Usando variável CSS
+    background-color: var(--card-background);
     padding: 40px;
     border-radius: v.$border-radius;
-    box-shadow: 0 4px 15px var(--shadow-color); // Usando variável CSS para sombra
+    box-shadow: 0 4px 15px var(--shadow-color);
     width: 100%;
     max-width: 500px;
     text-align: center;
     box-sizing: border-box;
-    transition: background-color v.$transition-speed, box-shadow v.$transition-speed; // Transição suave no container
+    transition: background-color v.$transition-speed, box-shadow v.$transition-speed;
 }
+
 
 // Seu h1 antigo dentro do container
 .container h1 {
@@ -126,18 +157,19 @@ body {
     }
 }
 
+// Estilos para a nova seção de informações
 .info-section {
     width: 100%;
-    max-width: 500px; // Alinha com a largura máxima do container
-    background-color: var(--card-background); // Fundo do card
-    padding: 30px 40px; // Padding interno, ajustado para responsividade
-    border-radius: v.$border-radius; // Bordas arredondadas
-    box-shadow: 0 4px 15px var(--shadow-color); // Sombra
-    margin-top: 30px; // Espaçamento acima da seção
-    text-align: left; // Alinhar texto à esquerda para leitura
+    max-width: 500px;
+    background-color: var(--card-background); // Mantém o fundo do card
+    padding: 30px 40px;
+    border-radius: v.$border-radius;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    margin-top: 30px;
+    text-align: left;
 
     h2 {
-        color: var(--primary-color); // Título da seção com cor primária
+        color: var(--primary-color);
         font-size: 1.5rem;
         margin-bottom: 15px;
         font-weight: 700;
@@ -147,14 +179,13 @@ body {
         font-size: 0.95rem;
         line-height: 1.6;
         margin-bottom: 15px;
-        color: var(--text-color); // Cor do texto geral
+        color: var(--text-color);
     }
 
     ul, ol {
-        padding-left: 20px; // Recuo para listas
+        padding-left: 20px;
         li {
-            margin-bottom: 8px; // Espaçamento entre itens da lista
-            // Estilo para o texto em negrito (se você usar **Texto** no HTML)
+            margin-bottom: 8px;
             strong {
                 font-weight: 600;
                 color: var(--primary-color);
@@ -163,30 +194,37 @@ body {
     }
 }
 
-// Estilos para o Footer
+// Estilos para o Footer - Mais discreto e centralizado
 .main-footer {
     width: 100%;
     max-width: 500px;
     text-align: center;
     margin-top: 30px;
-    padding: 15px 20px;
-    color: var(--text-color); // <-- Adicionado para garantir que o texto do footer use a variável do tema
-    font-size: 0.9rem;
-    opacity: 0.8;
+    padding: 15px 20px; // Padding interno
+    color: var(--text-color);
+    font-size: 0.8rem; // Um pouco menor para ser discreto
+    opacity: 0.7; // Mais suave
     box-sizing: border-box;
+    line-height: 1.8; // Espaçamento para múltiplas linhas
+
+    p {
+        margin: 0; // Remover margens padrão de parágrafos
+    }
+
+    .author-name {
+        font-weight: 600;
+        color: var(--primary-color); // Destaque o nome do autor
+    }
 
     a {
-        color: var(--primary-color); // Link principal do tema
+        color: var(--primary-color);
         text-decoration: none;
         font-weight: 600;
         transition: color v.$transition-speed;
 
         &:hover {
-            // Usando a variável CSS pré-calculada para o hover
-            color: var(--secondary-hover-color); // <-- CORRIGIDO
+            color: var(--secondary-hover-color);
+            text-decoration: underline;
         }
-    }
-    p {
-        margin: 0;
     }
 }
