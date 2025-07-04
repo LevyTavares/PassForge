@@ -126,6 +126,43 @@ body {
     }
 }
 
+.info-section {
+    width: 100%;
+    max-width: 500px; // Alinha com a largura máxima do container
+    background-color: var(--card-background); // Fundo do card
+    padding: 30px 40px; // Padding interno, ajustado para responsividade
+    border-radius: v.$border-radius; // Bordas arredondadas
+    box-shadow: 0 4px 15px var(--shadow-color); // Sombra
+    margin-top: 30px; // Espaçamento acima da seção
+    text-align: left; // Alinhar texto à esquerda para leitura
+
+    h2 {
+        color: var(--primary-color); // Título da seção com cor primária
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+
+    p, ul, ol {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        color: var(--text-color); // Cor do texto geral
+    }
+
+    ul, ol {
+        padding-left: 20px; // Recuo para listas
+        li {
+            margin-bottom: 8px; // Espaçamento entre itens da lista
+            // Estilo para o texto em negrito (se você usar **Texto** no HTML)
+            strong {
+                font-weight: 600;
+                color: var(--primary-color);
+            }
+        }
+    }
+}
+
 // Estilos para o Footer
 .main-footer {
     width: 100%;
