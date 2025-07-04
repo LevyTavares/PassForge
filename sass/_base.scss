@@ -213,9 +213,10 @@ body::before {
     padding: 15px 20px;
     color: var(--text-color);
     font-size: 0.8rem;
-    opacity: 0.7;
+    opacity: 0.7; // Opacidade geral - será sobrescrita para o tema claro
     box-sizing: border-box;
     line-height: 1.8;
+    transition: opacity v.$transition-speed, background-color v.$transition-speed, box-shadow v.$transition-speed; // Adicionado transições para suavidade
 
     p {
         margin: 0;
@@ -237,4 +238,14 @@ body::before {
             text-decoration: underline;
         }
     }
+
+    // --- NOVO AJUSTE PARA O TEMA CLARO (sobrescreve estilos gerais acima) ---
+    body:not(.dark-theme) & { // Aplica APENAS quando o body NÃO tem a classe dark-theme (ou seja, tema claro)
+        color: darken(v.$light-text-color, 15%); // Uma cor mais escura para o texto no tema claro para contraste
+        opacity: 1; // Garante opacidade total para legibilidade
+        background-color: rgba(255, 255, 255, 0.7); // Fundo branco levemente transparente para contraste
+        border-radius: v.$border-radius; // Arredondamento para consistência com cards
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); // Sombra sutil
+    }
+    // Fim do ajuste para tema claro
 }
