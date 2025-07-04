@@ -17,22 +17,28 @@
 
     --password-input-background: #{v.$light-password-input-bg};
     --secondary-hover-color: #{v.$light-secondary-hover-color};
+
+    // Novas variáveis para o overlay do background
+    --overlay-color: rgba(0, 0, 0, 0.4); // Overlay mais escuro para o tema claro
 }
 
 // Estilos para o tema escuro
 body.dark-theme {
     --primary-color: #{v.$dark-primary-color};
     --secondary-color: #{v.$dark-secondary-color};
-    --text-color: #{v.$dark-text-color}; // <-- Certifique-se que esta é a nova cor clara
+    --text-color: #{v.$dark-text-color};
     --background-color: #{v.$dark-background-color};
     --card-background: #{v.$dark-card-background};
-    --shadow-color: rgba(0, 0, 0, 0.5); // Sombra mais proeminente no tema escuro para contraste
+    --shadow-color: rgba(0, 0, 0, 0.6); // Sombra um pouco mais forte no escuro
 
     --background-gradient-start: #{v.$dark-background-gradient-start};
     --background-gradient-end: #{v.$dark-background-gradient-end};
 
     --password-input-background: #{v.$dark-password-input-bg};
     --secondary-hover-color: #{v.$dark-secondary-hover-color};
+
+    // Nova variável para o overlay do background no tema escuro
+    --overlay-color: rgba(0, 0, 0, 0.8); // Overlay mais escuro para o tema escuro
 }
 
 body {
@@ -40,86 +46,91 @@ body {
     @include m.flex-center;
     min-height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+    // Removido o gradiente de background aqui, substituído pela imagem
+    // background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-end));
+
+    // Estilos para a imagem de fundo
+    background-image: url('../assets/images/seu-background.webp'); // <-- ATUALIZE O CAMINHO E NOME DO ARQUIVO
+    background-size: cover; // Para cobrir toda a área
+    background-position: center center; // Centraliza a imagem
+    background-repeat: no-repeat; // Evita repetição
+    background-attachment: fixed; // Faz com que a imagem fique fixa ao rolar a página
+    position: relative; // Essencial para o pseudo-elemento ::before
+    z-index: 1; // Para garantir que o conteúdo fique acima do overlay
+
     color: var(--text-color);
     padding: 20px;
     box-sizing: border-box;
     flex-direction: column;
     justify-content: space-between;
-    transition: background-color v.$transition-speed, color v.$transition-speed;
+    transition: background-color v.$transition-speed, color v.$transition-speed; // Mantém a transição suave
+    overflow-x: hidden; // Previne rolagem horizontal devido a pequenos desalinhamentos
 }
 
-// Estilos para o Header Principal - Mais espaço e um visual "flutuante"
+// Pseudo-elemento para o overlay de cor sobre a imagem de fundo
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-color); // Cor do overlay que muda com o tema
+    transition: background-color v.$transition-speed; // Transição suave do overlay
+    z-index: -1; // Garante que o overlay fique abaixo do conteúdo do body
+}
+
+
+// Estilos para o Header Principal
 .main-header {
     width: 100%;
     max-width: 500px;
     text-align: center;
     margin-bottom: 25px;
-    padding: 25px 30px; // Aumentado o padding
-    background-color: var(--card-background); // Adicionado fundo
+    padding: 25px 30px;
+    background-color: var(--card-background);
     border-radius: v.$border-radius;
-    box-shadow: 0 6px 20px var(--shadow-color); // Sombra mais proeminente e suave
+    box-shadow: 0 6px 20px var(--shadow-color);
     color: var(--text-color);
-    opacity: 1; // Removido opacidade, o fundo já o destaca
+    opacity: 1;
     box-sizing: border-box;
-    position: relative; // Para posicionar o botão de toggle
+    position: relative;
 
     h1 {
         font-size: 2.2rem;
         color: var(--primary-color);
-        margin-bottom: 10px; // Ajustado espaço
+        margin-bottom: 10px;
         font-weight: 700;
         line-height: 1.2;
     }
 
     p {
         font-size: 1rem;
-        color: var(--text-color); // Usando a variável de texto principal
-        opacity: 0.8; // Para o subtítulo ser um pouco mais suave
+        color: var(--text-color);
+        opacity: 0.8;
         margin: 0;
     }
 }
-// Estilos para o botão de copiar senha
-#copyButton {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-color);
-    transition: color v.$transition-speed;
 
-    &:hover {
-        color: var(--primary-color);
-    }
-}
-// Estilos para o botão de copiar senha (ícone de copiar)
-#copyButton svg {
-    width: 24px;
-    height: 24px;
-}
-
-// Estilos para o botão de toggle de tema - Ajuste de posição e background
+// Estilos para o botão de toggle de tema
 .theme-toggle {
     position: absolute;
-    top: 20px; // Ajustado para mais espaço no padding
-    right: 25px; // Ajustado para mais espaço no padding
-    background-color: var(--background-color); // Fundo sutil para o botão
-    border: 1px solid var(--primary-color); // Borda para destaque
-    border-radius: 50%; // Circular
+    top: 20px;
+    right: 25px;
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
     width: 40px;
     height: 40px;
-    @include m.flex-center; // Centraliza o ícone
-    font-size: 1.2rem; // Tamanho do ícone
+    @include m.flex-center;
+    font-size: 1.2rem;
     cursor: pointer;
-    color: var(--primary-color); // Cor do ícone
+    color: var(--primary-color);
     transition: background-color v.$transition-speed, color v.$transition-speed, border-color v.$transition-speed;
 
     &:hover {
-        background-color: var(--primary-color); // Preenche o círculo no hover
-        color: var(--card-background); // Ícone fica claro no hover
+        background-color: var(--primary-color);
+        color: var(--card-background);
         border-color: var(--primary-color);
     }
 }
@@ -137,10 +148,9 @@ body {
     transition: background-color v.$transition-speed, box-shadow v.$transition-speed;
 }
 
-
 // Seu h1 antigo dentro do container
 .container h1 {
-    color: var(--primary-color); // Usando variável CSS
+    color: var(--primary-color);
     margin-bottom: 30px;
     font-weight: 700;
     font-size: 2rem;
@@ -150,7 +160,7 @@ body {
 .message-area {
     margin-top: 20px;
     font-size: 0.9rem;
-    color: green; // Cores de status podem ser fixas ou temáticas
+    color: green;
     min-height: 20px;
     &.error {
         color: red;
@@ -161,7 +171,7 @@ body {
 .info-section {
     width: 100%;
     max-width: 500px;
-    background-color: var(--card-background); // Mantém o fundo do card
+    background-color: var(--card-background);
     padding: 30px 40px;
     border-radius: v.$border-radius;
     box-shadow: 0 4px 15px var(--shadow-color);
@@ -194,26 +204,26 @@ body {
     }
 }
 
-// Estilos para o Footer - Mais discreto e centralizado
+// Estilos para o Footer
 .main-footer {
     width: 100%;
     max-width: 500px;
     text-align: center;
     margin-top: 30px;
-    padding: 15px 20px; // Padding interno
+    padding: 15px 20px;
     color: var(--text-color);
-    font-size: 0.8rem; // Um pouco menor para ser discreto
-    opacity: 0.7; // Mais suave
+    font-size: 0.8rem;
+    opacity: 0.7;
     box-sizing: border-box;
-    line-height: 1.8; // Espaçamento para múltiplas linhas
+    line-height: 1.8;
 
     p {
-        margin: 0; // Remover margens padrão de parágrafos
+        margin: 0;
     }
 
     .author-name {
         font-weight: 600;
-        color: var(--primary-color); // Destaque o nome do autor
+        color: var(--primary-color);
     }
 
     a {
