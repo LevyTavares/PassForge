@@ -175,6 +175,33 @@ body::before {
   color: var(--primary-color);
 }
 
+.privacy-content h2 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.privacy-content p, .privacy-content ul, .privacy-content ol {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+.privacy-content ul, .privacy-content ol {
+  padding-left: 25px;
+}
+.privacy-content ul li, .privacy-content ol li {
+  margin-bottom: 8px;
+}
+.privacy-content a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+.privacy-content a:hover {
+  color: var(--secondary-hover-color);
+}
+
 .main-footer {
   width: 100%;
   max-width: 500px;
