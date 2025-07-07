@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // (Este bloco é independente e deve ser executado em todas as páginas)
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
-    // Opcional: Garante que o ícone exista antes de tentar manipulá-lo
     const icon = themeToggle ? themeToggle.querySelector('i') : null;
 
     // Função para aplicar o tema com base na preferência salva no localStorage
@@ -12,13 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             body.classList.add('dark-theme');
-            if (icon) { // Verifica se o ícone existe antes de manipular
+            if (icon) {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
             }
         } else {
+            // Se não houver preferência ou for 'light', garante o tema claro
             body.classList.remove('dark-theme');
-            if (icon) { // Verifica se o ícone existe antes de manipular
+            if (icon) {
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
             }
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Função para gerar a senha
         function generatePassword() {
-            messageArea.textContent = '';
+            messageArea.textContent = ''; // Limpa mensagens anteriores
             let availableChars = '';
             let generatedPassword = '';
             const length = parseInt(passwordLengthInput.value);
@@ -160,6 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Opcional: Gera nova senha quando qualquer checkbox muda
         [includeUppercase, includeLowercase, includeNumbers, includeSymbols].forEach(checkbox => {
             checkbox.addEventListener('change', generatePassword);
+        });
+    }
+
+    // === Funcionalidade do Botão "Voltar" ===
+    const backButton = document.getElementById('backButton');
+    if (backButton) { // Verifica se o botão "Voltar" existe na página
+        backButton.addEventListener('click', () => {
+            window.history.back(); // Usa o histórico do navegador para voltar
         });
     }
 });
