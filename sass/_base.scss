@@ -204,6 +204,41 @@ body::before {
     }
 }
 
+// ***** INÍCIO: ESTILIZAÇÃO PARA A POLÍTICA DE PRIVACIDADE *****
+// Estilos para a nova seção de conteúdo da Política de Privacidade
+.privacy-content {
+    h2 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-top: 25px; // Espaçamento acima de cada novo título H2
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    p, ul, ol {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        color: var(--text-color);
+    }
+
+    ul, ol {
+        padding-left: 25px; // Recuo para listas
+        li {
+            margin-bottom: 8px;
+        }
+    }
+
+    a { // Links dentro do conteúdo da política
+        color: var(--primary-color);
+        text-decoration: underline;
+        &:hover {
+            color: var(--secondary-hover-color);
+        }
+    }
+}
+// ***** FIM: ESTILIZAÇÃO PARA A POLÍTICA DE PRIVACIDADE *****
+
 // Estilos para o Footer
 .main-footer {
     width: 100%;
