@@ -239,6 +239,26 @@ body::before {
 }
 // ***** FIM: ESTILIZAÇÃO PARA A POLÍTICA DE PRIVACIDADE *****
 
+// Estilos para os botões de navegação adicionais
+.navigation-buttons {
+    width: 100%;
+    max-width: 500px;
+    @include m.flex-center; // Centraliza os botões
+    gap: 20px; // Espaçamento entre os botões
+    margin-top: 30px; // Margem acima dos botões
+    margin-bottom: 20px; // Margem abaixo (se houver conteúdo após eles)
+
+    .nav-button {
+        @include m.button-styles; // Reutiliza os estilos de botão que já temos
+        flex-grow: 1; // Permite que os botões cresçam para ocupar o espaço
+        max-width: 200px; // Limita o tamanho máximo para não ficarem muito largos
+        text-decoration: none; // Remover sublinhado do link
+        text-align: center; // Centraliza o texto no botão
+        font-size: 0.9rem; // Um pouco menor para botões secundários
+        padding: 10px 15px; // Ajusta o padding do botão
+    }
+}
+
 // Estilos para o Footer
 .main-footer {
     width: 100%;
