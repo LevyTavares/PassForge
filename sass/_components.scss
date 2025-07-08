@@ -1,27 +1,31 @@
 // sass/_components.scss
 
-@use 'variables' as v; // Ainda precisamos deste para v.$border-radius e v.$transition-speed
-@use 'mixins' as m;
-@use 'sass:math'; // Certifique-se de ter este import se usar math.div
+@use 'variables' as v;
+@use 'mixins' as m; // Garanta que este mixin está sendo usado
+@use 'sass:math';
 
-// Display da Senha
+// Display da Senha - Container principal do input e botão
 .password-display {
     display: flex;
     margin-bottom: 30px;
-    border: 2px solid var(--primary-color); // Usando variável CSS
-    border-radius: v.$border-radius; // Permanece variável SASS
+    // REMOVIDO: Borda e border-radius AQUI - serão aplicados nos filhos (input e botão)
+    overflow: hidden; /* Manter este, ajuda no visual e arredondamento */
     position: relative;
     box-sizing: border-box;
+    transition: border-color v.$transition-speed;
 }
 
 #passwordOutput {
     flex-grow: 1;
     padding: 15px 20px;
     font-size: 1.2rem;
-    border: none;
+    border: 2px solid var(--primary-color); /* Borda completa no input */
+    border-right: none; /* Remove borda direita para se juntar ao botão */
+    border-top-left-radius: v.$border-radius; /* Arredonda canto superior esquerdo */
+    border-bottom-left-radius: v.$border-radius; /* Arredonda canto inferior esquerdo */
     outline: none;
-    background-color: var(--password-input-background); // Fundo do input (muda com o tema)
-    color: var(--primary-color); // Cor do texto da senha no tema claro (o roxo)
+    background-color: var(--password-input-background);
+    color: var(--primary-color);
     font-weight: 600;
     text-align: center;
     white-space: nowrap;
@@ -29,32 +33,40 @@
     text-overflow: ellipsis;
     box-sizing: border-box;
 
-    // --- AJUSTE PARA O TEMA ESCURO ---
-    body.dark-theme & { // Aplica estas regras quando o body tem a classe dark-theme
-        color: #ba68c8; // CORRIGIDO: Cor do texto da senha no tema escuro (um cinza muito claro)
-        background-color: #2C2C2C; // CORRIGIDO: Fundo do input da senha no tema escuro (roxo mais claro e rosado)
+    body.dark-theme & {
+        color: #eee;
+        background-color: #ba68c8;
     }
 }
 
 #copyButton {
-    @include m.button-styles;
-    background-color: var(--secondary-color); // Usando variável CSS
-    border-radius: 0 v.$border-radius v.$border-radius 0; // Permanece variável SASS
+    @include m.button-styles; // Usa os estilos base de botão
+    background-color: var(--secondary-color);
+    border-radius: 0; // Remove arredondamento individual (bordas externas serão aplicadas abaixo)
+    border: 2px solid var(--primary-color); /* Borda completa no botão */
+    border-left: none; /* Remove borda esquerda para se juntar ao input */
+    border-top-right-radius: v.$border-radius; /* Arredonda canto superior direito */
+    border-bottom-right-radius: v.$border-radius; /* Arredonda canto inferior direito */
     width: 60px;
     flex-shrink: 0;
     box-sizing: border-box;
+    transition: background-color v.$transition-speed, border-color v.$transition-speed;
+
+    // --- ADICIONADO PARA CENTRALIZAR O ÍCONE SVG ---
+    @include m.flex-center; /* Usa o mixin flex-center para alinhar o conteúdo (o SVG) */
+    // ------------------------------------------------
 
     svg {
         width: 24px;
         height: 24px;
-        color: white; // Cor fixa para o ícone
+        color: white; // Cor do ícone
     }
 
     &:hover {
-        background-color: var(--secondary-hover-color); // Usando variável CSS pré-calculada
+        background-color: var(--secondary-hover-color);
+        border-color: var(--secondary-hover-color); /* Muda a cor de TODAS as bordas no hover */
     }
 }
-
 // Opções
 .options {
     text-align: left;

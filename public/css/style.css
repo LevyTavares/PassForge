@@ -26,6 +26,7 @@ body.dark-theme {
   --password-input-background: #c34cd7;
   --secondary-hover-color: #8823c5;
   --overlay-color: rgba(0, 0, 0, 0.8);
+  --breadcrumb-link-hover-color: #bc37d3;
 }
 
 body {
@@ -65,7 +66,7 @@ body::before {
 
 .main-header {
   width: 100%;
-  max-width: 500px;
+  max-width: 960px; /* <-- ALTERADO DE 500px PARA 960px */
   text-align: center;
   margin-bottom: 25px;
   padding: 25px 30px;
@@ -114,6 +115,51 @@ body::before {
   color: var(--card-background);
   border-color: var(--primary-color);
 }
+body:not(.dark-theme) .theme-toggle {
+  color: #2b387c;
+  border-color: #2b387c;
+}
+body.dark-theme .theme-toggle {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.breadcrumbs {
+  width: 100%;
+  max-width: 960px; /* <-- ALTERADO DE 500px PARA 960px */
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  box-sizing: border-box;
+}
+.breadcrumbs ol {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+.breadcrumbs li {
+  font-family: "Lato", sans-serif;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+.breadcrumbs li:not(:last-child)::after {
+  content: " / ";
+  padding: 0 5px;
+}
+.breadcrumbs li a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+.breadcrumbs li a:hover {
+  color: var(--breadcrumb-link-hover-color);
+  text-decoration: underline;
+}
 
 .container {
   background-color: var(--card-background);
@@ -121,7 +167,7 @@ body::before {
   border-radius: 8px;
   box-shadow: 0 4px 15px var(--shadow-color);
   width: 100%;
-  max-width: 500px;
+  max-width: 960px; /* <-- ALTERADO DE 500px PARA 960px */
   text-align: center;
   box-sizing: border-box;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
@@ -147,29 +193,30 @@ body::before {
 
 .info-section {
   width: 100%;
-  max-width: 500px;
-  background-color: var(--card-background);
+  max-width: 960px;
+  text-align: left;
   padding: 30px 40px;
+  background-color: var(--card-background);
   border-radius: 8px;
   box-shadow: 0 4px 15px var(--shadow-color);
   margin-top: 30px;
-  text-align: left;
+  box-sizing: border-box;
 }
-.info-section h2 {
+.info-section h2 { /* Títulos internos, manter */
   font-family: "Roboto Condensed", sans-serif;
   color: var(--primary-color);
   font-size: 1.5rem;
   margin-bottom: 15px;
   font-weight: 700;
 }
-.info-section p, .info-section ul, .info-section ol {
-  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
+.info-section p, .info-section ul, .info-section ol { /* Conteúdo de texto, manter */
+  font-family: "Lato", sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 15px;
   color: var(--text-color);
 }
-.info-section ul, .info-section ol {
+.info-section ul, .info-section ol { /* Listas, manter */
   padding-left: 20px;
 }
 .info-section ul li, .info-section ol li {
@@ -181,15 +228,14 @@ body::before {
 }
 
 .privacy-content {
-  /* REMOVIDO: width, max-width, text-align, padding, background-color, border-radius, box-shadow, margin-top */
-  /* Estas propriedades serão aplicadas pelo .container pai. */
-  text-align: left; /* Manter alinhamento do texto */
-  padding: 0 40px; /* Ajuste o padding interno para corresponder ao container */
-  margin-top: 20px; /* Ajuste a margem interna */
-  margin-bottom: 20px; /* Ajuste a margem interna */
-  background-color: var(--card-background); /* Manter o fundo do card */
+  width: 100%;
+  /* REMOVIDO: max-width - será controlado pelo .container pai */
+  text-align: left;
+  padding: 0 40px;
+  margin-top: 20px; /* Ajuste para espaçamento dentro do container */
+  margin-bottom: 20px; /* Ajuste para espaçamento dentro do container */
 }
-.privacy-content h2 { /* Títulos internos, manter */
+.privacy-content h2 {
   font-family: "Roboto Condensed", sans-serif;
   color: var(--primary-color);
   font-size: 1.5rem;
@@ -197,20 +243,20 @@ body::before {
   margin-bottom: 10px;
   font-weight: 700;
 }
-.privacy-content p, .privacy-content ul, .privacy-content ol { /* Conteúdo de texto, manter */
+.privacy-content p, .privacy-content ul, .privacy-content ol {
   font-family: "Lato", sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 15px;
   color: var(--text-color);
 }
-.privacy-content ul, .privacy-content ol { /* Listas, manter */
+.privacy-content ul, .privacy-content ol {
   padding-left: 25px;
 }
 .privacy-content ul li, .privacy-content ol li {
   margin-bottom: 8px;
 }
-.privacy-content a { /* Links internos, manter */
+.privacy-content a {
   font-family: "Lato", sans-serif;
   color: var(--primary-color);
   text-decoration: underline;
@@ -220,15 +266,14 @@ body::before {
 }
 
 .about-content {
-  /* REMOVIDO: width, max-width, text-align, padding, background-color, border-radius, box-shadow, margin-top */
-  /* Estas propriedades serão aplicadas pelo .container pai. */
-  text-align: left; /* Manter alinhamento do texto */
-  padding: 0 40px; /* Ajuste o padding interno para corresponder ao container */
-  margin-top: 20px; /* Ajuste a margem interna */
-  margin-bottom: 20px; /* Ajuste a margem interna */
-  background-color: var(--card-background); /* Manter o fundo do card */
+  width: 100%;
+  /* REMOVIDO: max-width - será controlado pelo .container pai */
+  text-align: left;
+  padding: 0 40px;
+  margin-top: 20px; /* Ajuste para espaçamento dentro do container */
+  margin-bottom: 20px; /* Ajuste para espaçamento dentro do container */
 }
-.about-content h2 { /* Títulos internos, manter */
+.about-content h2 {
   font-family: "Roboto Condensed", sans-serif;
   color: var(--primary-color);
   font-size: 1.5rem;
@@ -236,20 +281,20 @@ body::before {
   margin-bottom: 10px;
   font-weight: 700;
 }
-.about-content p, .about-content ul, .about-content ol { /* Conteúdo de texto, manter */
+.about-content p, .about-content ul, .about-content ol {
   font-family: "Lato", sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 15px;
   color: var(--text-color);
 }
-.about-content ul, .about-content ol { /* Listas, manter */
+.about-content ul, .about-content ol {
   padding-left: 25px;
 }
 .about-content ul li, .about-content ol li {
   margin-bottom: 8px;
 }
-.about-content a { /* Links internos, manter */
+.about-content a {
   font-family: "Lato", sans-serif;
   color: var(--primary-color);
   text-decoration: underline;
@@ -260,7 +305,7 @@ body::before {
 
 .navigation-buttons {
   width: 100%;
-  max-width: 500px;
+  max-width: 960px; /* <-- ALTERADO DE 500px PARA 960px */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -294,7 +339,7 @@ body::before {
 
 .main-footer {
   width: 100%;
-  max-width: 500px;
+  max-width: 960px; /* <-- ALTERADO DE 500px PARA 960px */
   text-align: center;
   margin-top: 30px;
   padding: 15px 20px;
@@ -336,17 +381,20 @@ body:not(.dark-theme) .main-footer {
 .password-display {
   display: flex;
   margin-bottom: 30px;
-  border: 2px solid var(--primary-color);
-  border-radius: 8px;
+  overflow: hidden; /* Manter este, ajuda no visual e arredondamento */
   position: relative;
   box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
 #passwordOutput {
   flex-grow: 1;
   padding: 15px 20px;
   font-size: 1.2rem;
-  border: none;
+  border: 2px solid var(--primary-color); /* Borda completa no input */
+  border-right: none; /* Remove borda direita para se juntar ao botão */
+  border-top-left-radius: 8px; /* Arredonda canto superior esquerdo */
+  border-bottom-left-radius: 8px; /* Arredonda canto inferior esquerdo */
   outline: none;
   background-color: var(--password-input-background);
   color: var(--primary-color);
@@ -358,8 +406,8 @@ body:not(.dark-theme) .main-footer {
   box-sizing: border-box;
 }
 body.dark-theme #passwordOutput {
-  color: #ba68c8;
-  background-color: #2C2C2C;
+  color: #eee;
+  background-color: #ba68c8;
 }
 
 #copyButton {
@@ -373,10 +421,19 @@ body.dark-theme #passwordOutput {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   background-color: var(--secondary-color);
-  border-radius: 0 8px 8px 0;
+  border-radius: 0;
+  border: 2px solid var(--primary-color); /* Borda completa no botão */
+  border-left: none; /* Remove borda esquerda para se juntar ao input */
+  border-top-right-radius: 8px; /* Arredonda canto superior direito */
+  border-bottom-right-radius: 8px; /* Arredonda canto inferior direito */
   width: 60px;
   flex-shrink: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Usa o mixin flex-center para alinhar o conteúdo (o SVG) */
 }
 #copyButton:hover {
   background-color: var(--secondary-hover-color);
@@ -391,6 +448,7 @@ body.dark-theme #passwordOutput {
 }
 #copyButton:hover {
   background-color: var(--secondary-hover-color);
+  border-color: var(--secondary-hover-color); /* Muda a cor de TODAS as bordas no hover */
 }
 
 .options {
@@ -539,12 +597,15 @@ body.dark-theme #passwordOutput {
     padding: 10px 10px;
   }
   #copyButton {
-    width: 45px;
-    min-width: 45px;
+    width: 50px;
+    min-width: 50px;
+    padding: 10px; /* Adiciona padding interno ao botão para dar espaço ao SVG */
   }
   #copyButton svg {
-    width: 20px;
-    height: 20px;
+    width: 28px; /* AUMENTADO O TAMANHO DO SVG PARA 28px */
+    height: 28px; /* AUMENTADO O TAMANHO DO SVG PARA 28px */
+    display: block;
+    margin: auto;
   }
   .info-section {
     padding: 15px 20px;
