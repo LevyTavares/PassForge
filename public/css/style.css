@@ -26,7 +26,6 @@ body.dark-theme {
   --password-input-background: #c34cd7;
   --secondary-hover-color: #8823c5;
   --overlay-color: rgba(0, 0, 0, 0.8);
-  --breadcrumb-link-hover-color: #bc37d3;
 }
 
 body {
@@ -116,43 +115,6 @@ body::before {
   border-color: var(--primary-color);
 }
 
-.breadcrumbs {
-  width: 100%;
-  max-width: 500px;
-  margin-top: 15px;
-  margin-bottom: 20px;
-  padding: 10px 20px;
-  background-color: var(--card-background);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px var(--shadow-color);
-  box-sizing: border-box;
-}
-.breadcrumbs ol {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 0.85rem;
-}
-.breadcrumbs li {
-  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
-  color: var(--text-color);
-  opacity: 0.7;
-}
-.breadcrumbs li:not(:last-child)::after {
-  content: " / ";
-  padding: 0 5px;
-}
-.breadcrumbs li a {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-}
-.breadcrumbs li a:hover {
-  color: var(--breadcrumb-link-hover-color); /* <-- CORRIGIDO: Usa a nova variável CSS */
-  text-decoration: underline;
-}
-
 .container {
   background-color: var(--card-background);
   padding: 40px;
@@ -219,16 +181,15 @@ body::before {
 }
 
 .privacy-content {
-  width: 100%; /* Adicionado para garantir que o container abranja */
-  max-width: 500px; /* Adicionado para consistência */
-  text-align: left; /* Adicionado para consistência */
-  padding: 30px 40px; /* Adicionado para consistência */
-  background-color: var(--card-background); /* Adicionado para consistência */
-  border-radius: 8px; /* Adicionado para consistência */
-  box-shadow: 0 4px 15px var(--shadow-color); /* Adicionado para consistência */
-  margin-top: 30px; /* Adicionado para consistência */
+  /* REMOVIDO: width, max-width, text-align, padding, background-color, border-radius, box-shadow, margin-top */
+  /* Estas propriedades serão aplicadas pelo .container pai. */
+  text-align: left; /* Manter alinhamento do texto */
+  padding: 0 40px; /* Ajuste o padding interno para corresponder ao container */
+  margin-top: 20px; /* Ajuste a margem interna */
+  margin-bottom: 20px; /* Ajuste a margem interna */
+  background-color: var(--card-background); /* Manter o fundo do card */
 }
-.privacy-content h2 {
+.privacy-content h2 { /* Títulos internos, manter */
   font-family: "Roboto Condensed", sans-serif;
   color: var(--primary-color);
   font-size: 1.5rem;
@@ -236,21 +197,21 @@ body::before {
   margin-bottom: 10px;
   font-weight: 700;
 }
-.privacy-content p, .privacy-content ul, .privacy-content ol {
-  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
+.privacy-content p, .privacy-content ul, .privacy-content ol { /* Conteúdo de texto, manter */
+  font-family: "Lato", sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 15px;
   color: var(--text-color);
 }
-.privacy-content ul, .privacy-content ol {
+.privacy-content ul, .privacy-content ol { /* Listas, manter */
   padding-left: 25px;
 }
 .privacy-content ul li, .privacy-content ol li {
   margin-bottom: 8px;
 }
-.privacy-content a {
-  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
+.privacy-content a { /* Links internos, manter */
+  font-family: "Lato", sans-serif;
   color: var(--primary-color);
   text-decoration: underline;
 }
@@ -259,16 +220,15 @@ body::before {
 }
 
 .about-content {
-  width: 100%; /* Adicionado para garantir que o container abranja */
-  max-width: 500px; /* Adicionado para consistência */
-  text-align: left; /* Adicionado para consistência */
-  padding: 30px 40px; /* Adicionado para consistência */
-  background-color: var(--card-background); /* Adicionado para consistência */
-  border-radius: 8px; /* Adicionado para consistência */
-  box-shadow: 0 4px 15px var(--shadow-color); /* Adicionado para consistência */
-  margin-top: 30px; /* Adicionado para consistência */
+  /* REMOVIDO: width, max-width, text-align, padding, background-color, border-radius, box-shadow, margin-top */
+  /* Estas propriedades serão aplicadas pelo .container pai. */
+  text-align: left; /* Manter alinhamento do texto */
+  padding: 0 40px; /* Ajuste o padding interno para corresponder ao container */
+  margin-top: 20px; /* Ajuste a margem interna */
+  margin-bottom: 20px; /* Ajuste a margem interna */
+  background-color: var(--card-background); /* Manter o fundo do card */
 }
-.about-content h2 {
+.about-content h2 { /* Títulos internos, manter */
   font-family: "Roboto Condensed", sans-serif;
   color: var(--primary-color);
   font-size: 1.5rem;
@@ -276,21 +236,21 @@ body::before {
   margin-bottom: 10px;
   font-weight: 700;
 }
-.about-content p, .about-content ul, .about-content ol {
-  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
+.about-content p, .about-content ul, .about-content ol { /* Conteúdo de texto, manter */
+  font-family: "Lato", sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 15px;
   color: var(--text-color);
 }
-.about-content ul, .about-content ol {
+.about-content ul, .about-content ol { /* Listas, manter */
   padding-left: 25px;
 }
 .about-content ul li, .about-content ol li {
   margin-bottom: 8px;
 }
-.about-content a {
-  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
+.about-content a { /* Links internos, manter */
+  font-family: "Lato", sans-serif;
   color: var(--primary-color);
   text-decoration: underline;
 }
