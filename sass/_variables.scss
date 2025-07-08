@@ -1,10 +1,10 @@
 // sass/_variables.scss
 
 // Cores base (SASS variables) para o TEMA CLARO
-$light-primary-color: #3f51b5;
-$light-secondary-color: #673ab7;
+$light-primary-color: #3f51b5; // Azul vibrante para tema claro
+$light-secondary-color: #673ab7; // Roxo complemento para tema claro
 $light-text-color: #333;
-$light-background-color: #f0f2f5;
+$light-background-color: #f0f2f5; // Cinza claro
 $light-card-background: #ffffff;
 
 // Cores calculadas para o TEMA CLARO (usando funções SASS)
@@ -12,22 +12,25 @@ $light-background-gradient-start: $light-background-color;
 $light-background-gradient-end: lighten($light-background-color, 5%);
 $light-password-input-bg: lighten($light-primary-color, 45%);
 $light-secondary-hover-color: darken($light-secondary-color, 10%);
+$light-breadcrumb-link-hover-color: darken($light-primary-color, 10%); // Nova variável para o hover do link do breadcrumb (tema claro)
+
 
 // Cores base (SASS variables) para o TEMA ESCURO
-$dark-primary-color: #9c27b0;
-$dark-secondary-color: #6a1b9a;
-$dark-text-color: #f5f5f5;
-$dark-background-color: #121212;
-$dark-card-background: #1e1e1e;
+$dark-primary-color: #9c27b0; // Roxo mais vibrante para tema escuro
+$dark-secondary-color: #6a1b9a; // Um tom um pouco mais escuro para o secundário escuro
+$dark-text-color: #f5f5f5; // Mais claro para texto em fundo escuro
+$dark-background-color: #121212; // Fundo ainda mais escuro para maior contraste
+$dark-card-background: #1e1e1e; // Fundo do card um pouco mais claro que o background
 
 // Cores calculadas para o TEMA ESCURO (usando funções SASS)
 $dark-background-gradient-start: $dark-background-color;
 $dark-background-gradient-end: lighten($dark-background-color, 5%);
-$dark-password-input-bg: lighten($dark-primary-color, 15%);
-$dark-secondary-hover-color: lighten($dark-secondary-color, 10%);
+$dark-password-input-bg: lighten($dark-primary-color, 15%); // Ajuste para ficar visível
+$dark-secondary-hover-color: lighten($dark-secondary-color, 10%); // Ajuste para o hover (se dark, lighten para hover)
+$dark-breadcrumb-link-hover-color: lighten($dark-primary-color, 10%); // Nova variável para o hover do link do breadcrumb (tema escuro)
 
 
 // Variáveis de dimensão/velocidade (permanecem como SASS variables)
 $border-radius: 8px;
-$shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+$shadow: 0 4px 15px rgba(0, 0, 0, 0.1); // Sombra genérica para fallback
 $transition-speed: 0.3s ease;

@@ -11,6 +11,7 @@
   --password-input-background: #e4e7f6;
   --secondary-hover-color: #512e90;
   --overlay-color: rgba(0, 0, 0, 0.4);
+  --breadcrumb-link-hover-color: #32408f;
 }
 
 body.dark-theme {
@@ -25,10 +26,11 @@ body.dark-theme {
   --password-input-background: #c34cd7;
   --secondary-hover-color: #8823c5;
   --overlay-color: rgba(0, 0, 0, 0.8);
+  --breadcrumb-link-hover-color: #bc37d3;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Lato", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,6 +79,7 @@ body::before {
   position: relative;
 }
 .main-header h1 {
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 2.2rem;
   color: var(--primary-color);
   margin-bottom: 10px;
@@ -113,6 +116,43 @@ body::before {
   border-color: var(--primary-color);
 }
 
+.breadcrumbs {
+  width: 100%;
+  max-width: 500px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  box-sizing: border-box;
+}
+.breadcrumbs ol {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+}
+.breadcrumbs li {
+  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
+  color: var(--text-color);
+  opacity: 0.7;
+}
+.breadcrumbs li:not(:last-child)::after {
+  content: " / ";
+  padding: 0 5px;
+}
+.breadcrumbs li a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+.breadcrumbs li a:hover {
+  color: var(--breadcrumb-link-hover-color); /* <-- CORRIGIDO: Usa a nova variável CSS */
+  text-decoration: underline;
+}
+
 .container {
   background-color: var(--card-background);
   padding: 40px;
@@ -126,6 +166,7 @@ body::before {
 }
 
 .container h1 {
+  font-family: "Roboto Condensed", sans-serif;
   color: var(--primary-color);
   margin-bottom: 30px;
   font-weight: 700;
@@ -153,12 +194,14 @@ body::before {
   text-align: left;
 }
 .info-section h2 {
+  font-family: "Roboto Condensed", sans-serif;
   color: var(--primary-color);
   font-size: 1.5rem;
   margin-bottom: 15px;
   font-weight: 700;
 }
 .info-section p, .info-section ul, .info-section ol {
+  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 15px;
@@ -175,7 +218,18 @@ body::before {
   color: var(--primary-color);
 }
 
+.privacy-content {
+  width: 100%; /* Adicionado para garantir que o container abranja */
+  max-width: 500px; /* Adicionado para consistência */
+  text-align: left; /* Adicionado para consistência */
+  padding: 30px 40px; /* Adicionado para consistência */
+  background-color: var(--card-background); /* Adicionado para consistência */
+  border-radius: 8px; /* Adicionado para consistência */
+  box-shadow: 0 4px 15px var(--shadow-color); /* Adicionado para consistência */
+  margin-top: 30px; /* Adicionado para consistência */
+}
 .privacy-content h2 {
+  font-family: "Roboto Condensed", sans-serif;
   color: var(--primary-color);
   font-size: 1.5rem;
   margin-top: 25px;
@@ -183,6 +237,7 @@ body::before {
   font-weight: 700;
 }
 .privacy-content p, .privacy-content ul, .privacy-content ol {
+  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 15px;
@@ -195,10 +250,51 @@ body::before {
   margin-bottom: 8px;
 }
 .privacy-content a {
+  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
   color: var(--primary-color);
   text-decoration: underline;
 }
 .privacy-content a:hover {
+  color: var(--secondary-hover-color);
+}
+
+.about-content {
+  width: 100%; /* Adicionado para garantir que o container abranja */
+  max-width: 500px; /* Adicionado para consistência */
+  text-align: left; /* Adicionado para consistência */
+  padding: 30px 40px; /* Adicionado para consistência */
+  background-color: var(--card-background); /* Adicionado para consistência */
+  border-radius: 8px; /* Adicionado para consistência */
+  box-shadow: 0 4px 15px var(--shadow-color); /* Adicionado para consistência */
+  margin-top: 30px; /* Adicionado para consistência */
+}
+.about-content h2 {
+  font-family: "Roboto Condensed", sans-serif;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.about-content p, .about-content ul, .about-content ol {
+  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+.about-content ul, .about-content ol {
+  padding-left: 25px;
+}
+.about-content ul li, .about-content ol li {
+  margin-bottom: 8px;
+}
+.about-content a {
+  font-family: "Lato", sans-serif; /* Consistência com o corpo de texto */
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+.about-content a:hover {
   color: var(--secondary-hover-color);
 }
 

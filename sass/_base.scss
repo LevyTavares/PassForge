@@ -20,6 +20,9 @@
     --password-input-background: #{v.$light-password-input-bg};
     --secondary-hover-color: #{v.$light-secondary-hover-color};
     --overlay-color: rgba(0, 0, 0, 0.4); // Overlay mais escuro para o tema claro
+
+    // Nova variável para o hover do link do breadcrumb (tema claro)
+    --breadcrumb-link-hover-color: #{v.$light-breadcrumb-link-hover-color};
 }
 
 // Estilos para o tema escuro
@@ -37,6 +40,9 @@ body.dark-theme {
     --password-input-background: #{v.$dark-password-input-bg};
     --secondary-hover-color: #{v.$dark-secondary-hover-color};
     --overlay-color: rgba(0, 0, 0, 0.8); // Overlay mais escuro para o tema escuro
+
+    // Nova variável para o hover do link do breadcrumb (tema escuro)
+    --breadcrumb-link-hover-color: #{v.$dark-breadcrumb-link-hover-color};
 }
 
 body {
@@ -45,7 +51,7 @@ body {
     min-height: 100vh;
     margin: 0;
 
-    background-image: url('../assets/images/abstract-tech-bg.webp'); // <-- ATUALIZE O CAMINHO E NOME DO ARQUIVO
+    background-image: url('../assets/images/abstract-tech-bg.png'); // <-- ATUALIZE O CAMINHO E NOME DO ARQUIVO (se for png)
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -165,8 +171,8 @@ body::before {
             text-decoration: none;
             font-weight: 500;
             &:hover {
+                color: var(--breadcrumb-link-hover-color); /* <-- CORRIGIDO: Usa a nova variável CSS */
                 text-decoration: underline;
-                color: darken(var(--primary-color), 10%);
             }
         }
     }
