@@ -44,15 +44,20 @@
     padding: 10px 10px;
   }
   #copyButton {
-    width: 50px;
-    min-width: 50px;
-    padding: 10px; /* Adiciona padding interno ao botão para dar espaço ao SVG */
+    width: 55px; /* <-- AUMENTADO: Para dar mais espaço ao ícone */
+    min-width: 55px; /* <-- AUMENTADO: Garante que não encolha menos que isso */
+    padding: 0; /* <-- MUITO IMPORTANTE: Remover padding interno para controle total do SVG */
 
     svg {
-      width: 28px;   /* AUMENTADO O TAMANHO DO SVG PARA 28px */
-      height: 28px;  /* AUMENTADO O TAMANHO DO SVG PARA 28px */
+      width: 28px;   /* Mantém 28px */
+      height: 28px;  /* Mantém 28px */
       display: block;
       margin: auto;
+      font-size: 28px; /* <-- NOVO: Aplicar font-size ao SVG para garantir tamanho */
+      line-height: 1; /* <-- NOVO: Ajuda no alinhamento vertical */
+      fill: none; /* Garante que o preenchimento não se sobreponha à cor do stroke */
+      stroke: white; /* Cor do ícone - garantir que seja branco, não currentColor */
+      stroke-width: 2; /* Manter a espessura do traço */
     }
   }
 
