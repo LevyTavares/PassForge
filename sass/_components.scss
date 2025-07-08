@@ -1,14 +1,13 @@
 // sass/_components.scss
 
 @use 'variables' as v;
-@use 'mixins' as m; // Garanta que este mixin está sendo usado
+@use 'mixins' as m;
 @use 'sass:math';
 
 // Display da Senha - Container principal do input e botão
 .password-display {
     display: flex;
     margin-bottom: 30px;
-    // REMOVIDO: Borda e border-radius AQUI - serão aplicados nos filhos (input e botão)
     overflow: hidden; /* Manter este, ajuda no visual e arredondamento */
     position: relative;
     box-sizing: border-box;
@@ -47,26 +46,28 @@
     border-left: none; /* Remove borda esquerda para se juntar ao input */
     border-top-right-radius: v.$border-radius; /* Arredonda canto superior direito */
     border-bottom-right-radius: v.$border-radius; /* Arredonda canto inferior direito */
-    width: 60px;
+    width: 60px; /* Manter 60px para desktop, será ajustado em mobile */
     flex-shrink: 0;
     box-sizing: border-box;
     transition: background-color v.$transition-speed, border-color v.$transition-speed;
 
-    // --- ADICIONADO PARA CENTRALIZAR O ÍCONE SVG ---
-    @include m.flex-center; /* Usa o mixin flex-center para alinhar o conteúdo (o SVG) */
-    // ------------------------------------------------
+    // REMOVIDO: @include m.flex-center; daqui, pois será controlado pelo grid no mobile
+    // Esta parte será adicionada no _responsive.scss para mobile
 
     svg {
-        width: 24px;
-        height: 24px;
-        color: white; // Cor do ícone
+        width: 24px;   /* Tamanho padrão do SVG no desktop */
+        height: 24px;  /* Tamanho padrão do SVG no desktop */
+        fill: none;
+        stroke: white; /* Cor do ícone - garantir que seja branco */
+        stroke-width: 2;
     }
 
     &:hover {
         background-color: var(--secondary-hover-color);
-        border-color: var(--secondary-hover-color); /* Muda a cor de TODAS as bordas no hover */
+        border-color: var(--secondary-hover-color);
     }
 }
+
 // Opções
 .options {
     text-align: left;
@@ -147,7 +148,7 @@
                 border-radius: 4px;
                 margin-right: 10px;
                 cursor: pointer;
-                @include m.flex-center;
+                @include m.flex-center; // Centraliza o checkmark
                 transition: background-color v.$transition-speed, border-color v.$transition-speed; // Permanece variável SASS
 
                 &:checked {

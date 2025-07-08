@@ -426,14 +426,10 @@ body.dark-theme #passwordOutput {
   border-left: none; /* Remove borda esquerda para se juntar ao input */
   border-top-right-radius: 8px; /* Arredonda canto superior direito */
   border-bottom-right-radius: 8px; /* Arredonda canto inferior direito */
-  width: 60px;
+  width: 60px; /* Manter 60px para desktop, será ajustado em mobile */
   flex-shrink: 0;
   box-sizing: border-box;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* Usa o mixin flex-center para alinhar o conteúdo (o SVG) */
 }
 #copyButton:hover {
   background-color: var(--secondary-hover-color);
@@ -442,13 +438,15 @@ body.dark-theme #passwordOutput {
   transform: translateY(0);
 }
 #copyButton svg {
-  width: 24px;
-  height: 24px;
-  color: white;
+  width: 24px; /* Tamanho padrão do SVG no desktop */
+  height: 24px; /* Tamanho padrão do SVG no desktop */
+  fill: none;
+  stroke: white; /* Cor do ícone - garantir que seja branco */
+  stroke-width: 2;
 }
 #copyButton:hover {
   background-color: var(--secondary-hover-color);
-  border-color: var(--secondary-hover-color); /* Muda a cor de TODAS as bordas no hover */
+  border-color: var(--secondary-hover-color);
 }
 
 .options {
@@ -597,20 +595,18 @@ body.dark-theme #passwordOutput {
     padding: 10px 10px;
   }
   #copyButton {
-    width: 55px; /* <-- AUMENTADO: Para dar mais espaço ao ícone */
-    min-width: 55px; /* <-- AUMENTADO: Garante que não encolha menos que isso */
-    padding: 0; /* <-- MUITO IMPORTANTE: Remover padding interno para controle total do SVG */
+    width: 55px; /* Manter 55px para dar mais espaço */
+    min-width: 55px;
+    padding: 0; /* Remover padding para que grid controle o espaçamento */
+    display: grid; /* <-- NOVO: Usar Grid para centralização */
+    place-items: center; /* <-- NOVO: Centraliza o conteúdo (SVG) perfeitamente */
   }
   #copyButton svg {
-    width: 28px; /* Mantém 28px */
-    height: 28px; /* Mantém 28px */
-    display: block;
-    margin: auto;
-    font-size: 28px; /* <-- NOVO: Aplicar font-size ao SVG para garantir tamanho */
-    line-height: 1; /* <-- NOVO: Ajuda no alinhamento vertical */
-    fill: none; /* Garante que o preenchimento não se sobreponha à cor do stroke */
-    stroke: white; /* Cor do ícone - garantir que seja branco, não currentColor */
-    stroke-width: 2; /* Manter a espessura do traço */
+    width: 28px; /* <-- AUMENTADO: Garantir tamanho visível no mobile */
+    height: 28px; /* <-- AUMENTADO: Garantir tamanho visível no mobile */
+    /* display: block; e margin: auto; não são mais necessários com grid/place-items */
+    /* font-size: e line-height: também não são mais necessários para SVG com grid */
+    /* fill: none; stroke: white; stroke-width: 2; já devem estar em _components.scss */
   }
   .info-section {
     padding: 15px 20px;
