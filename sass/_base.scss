@@ -318,14 +318,20 @@ body::before {
     width: 100%;
     max-width: 500px;
     text-align: center;
-    margin-top: 30px;
-    padding: 15px 20px;
-    color: var(--text-color);
+    margin-top: 30px; // Espaçamento acima do footer
+    padding: 15px 20px; // Padding interno
+    color: var(--text-color); // Cor do texto principal
     font-size: 0.8rem;
-    opacity: 0.7;
+    opacity: 0.7; // Opacidade geral, ajustada para tema claro abaixo
     box-sizing: border-box;
     line-height: 1.8;
     transition: opacity v.$transition-speed, background-color v.$transition-speed, box-shadow v.$transition-speed;
+
+    // --- PROPRIEDADES DE CARD ADICIONADAS AQUI PARA CONSISTÊNCIA ---
+    background-color: var(--card-background);
+    border-radius: v.$border-radius;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    // ---------------------------------------------------------------
 
     p {
         margin: 0;
@@ -348,12 +354,12 @@ body::before {
         }
     }
 
-    // Ajuste para o tema claro do footer
+    // Ajuste para o tema claro do footer (sobrescreve estilos gerais acima para o tema claro)
     body:not(.dark-theme) & {
         color: darken(v.$light-text-color, 15%);
         opacity: 1;
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: v.$border-radius;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        background-color: rgba(255, 255, 255, 0.7); // Fundo branco mais claro para contraste
+        border-radius: v.$border-radius; // Reafirma bordas
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); // Reafirma sombra
     }
 }
